@@ -1,0 +1,49 @@
+### 기본 api 테스트
+GET http://localhost:8080/message
+
+### 사용 가능한 endpoint 목록 가져오
+GET http://localhost:8081/actuator
+
+### health 정보 읽기
+GET http://localhost:8081/actuator/health
+
+### loggers 정보 읽기
+GET http://localhost:8081/actuator/loggers
+
+### 특정 logger 정보 읽기
+GET http://localhost:8081/actuator/loggers/kr.revelope.example.spring.boot.actuator.controller.SampleController
+
+### 특정 logger 정보 수정
+POST http://localhost:8081/actuator/loggers/kr.revelope.example.spring.boot.actuator.controller.SampleController
+Content-Type: application/json
+
+{
+  "name": "kr.revelope.example.spring.boot.actuator.controller.SampleController",
+  "configuredLevel": "DEBUG"
+}
+
+### message 읽기
+GET http://localhost:8081/actuator/message
+
+### message 수정
+POST http://localhost:8081/actuator/message
+Content-Type: application/json
+
+{
+  "message": "Custom message!!!"
+}
+
+### 사용 가능한 metrics 정보 읽기
+GET http://localhost:8081/actuator/metrics
+
+### metrics 정보 읽기
+GET http://localhost:8081/actuator/metrics/jvm.memory.max
+
+### metrics에 테그 넣어서 정보 추출
+### metrics 정보 읽기
+GET http://localhost:8081/actuator/metrics/jvm.memory.max?tag=area:heap&tag=id:PS Survivor Space
+
+### custom metrics 정보 읽기
+GET http://localhost:8081/actuator/metrics/message.call.count
+
+###
